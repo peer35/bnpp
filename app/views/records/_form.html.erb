@@ -1,0 +1,266 @@
+<script>
+    /**
+     * Created by peter on 06-04-2018.
+     */
+
+    document.addEventListener('turbolinks:load', ready);
+    function ready() {
+            parse_verschenen();
+            parse_redactie();
+            parse_medewerkers();
+            parse_eigenaar();
+            parse_uitgever();
+            parse_drukker();
+            parse_uitgave();
+            parse_ondertitel();
+            $('#record_verschenen').on('input selectionchange propertychange', function () {
+                parse_verschenen();
+            });
+            $('#record_redactie').on('input selectionchange propertychange', function () {
+                parse_redactie();
+            });
+            $('#record_medewerkers').on('input selectionchange propertychange', function () {
+                parse_medewerkers();
+            });
+            $('#record_eigenaar').on('input selectionchange propertychange', function () {
+                parse_eigenaar();
+            });
+            $('#record_uitgever').on('input selectionchange propertychange', function () {
+                parse_uitgever();
+            });
+            $('#record_drukker').on('input selectionchange propertychange', function () {
+                parse_drukker();
+            });
+            $('#record_uitgave').on('input selectionchange propertychange', function () {
+                parse_uitgave();
+            });
+            $('#record_ondertitel').on('input selectionchange propertychange', function () {
+                parse_ondertitel();
+            });
+
+    }
+
+    function validate(teststr, type, div){
+        $.post('<%= validate_path %>',
+            {
+                'type': type,
+                'teststr': teststr
+            },
+            function (data) {
+                html='<table>';
+                trs='';
+                for (var i in data) {
+                    trs+='<tr>';
+                    th='<tr>';
+                    for (var k in data[i]) {
+                        th += '<th>'+k+'</th>';
+                        val=' - ';
+                        if (data[i][k]){
+                            val=data[i][k];
+                        }
+                        trs += '<td>' + val + '</td>';
+                    }
+                    th+='</tr>';
+                    trs+='</tr>';
+                }
+                html += th;
+                html += trs;
+                html += '</table>'
+                $(div).html(html);
+                $("textarea").each(function () {
+                    var h=this.value;
+                    this.value=h.replace(/; /g,';\n');
+                    this.style.height = (this.scrollHeight)+'px';
+                });
+            });
+
+    }
+
+    function parse_redactie(){
+        var test=$('#record_redactie').val();
+        validate(test, 'persoon','#parsed_redactie');
+    }
+
+    function parse_medewerkers(){
+        var test=$('#record_medewerkers').val();
+        validate(test, 'persoon','#parsed_medewerkers');
+    }
+
+    function parse_verschenen(){
+        var test=$('#record_verschenen').val();
+        validate(test, 'verschenen','#parsed_verschenen');
+    }
+
+    function parse_eigenaar(){
+        var test=$('#record_eigenaar').val();
+        validate(test, 'rest','#parsed_eigenaar');
+    }
+
+    function parse_uitgever(){
+        var test=$('#record_uitgever').val();
+        validate(test, 'rest','#parsed_uitgever');
+    }
+
+    function parse_drukker() {
+        var test = $('#record_drukker').val();
+        validate(test, 'rest', '#parsed_drukker');
+    }
+
+    function parse_uitgave() {
+        var test = $('#record_uitgave').val();
+        validate(test, 'rest', '#parsed_uitgave');
+    }
+
+    function parse_ondertitel() {
+        var test = $('#record_ondertitel').val();
+        validate(test, 'rest', '#parsed_ondertitel');
+    }
+</script>
+
+<div class="record-form">
+<%= form_for(record) do |f| %>
+  <% if record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(record.errors.count, "error") %> prohibited this record from being saved:</h2>
+
+      <ul>
+      <% record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titel %>
+    <%= f.text_area :titel %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ondertitel %>
+    <%= f.text_area :ondertitel %>
+    <div class="parsed" id="parsed_ondertitel"></div>
+  </div>
+
+  <div class="field">
+    <%= f.label :categorie %>
+    <%= f.text_area :categorie %>
+  </div>
+
+  <div class="field">
+    <%= f.label :verschenen %>
+    <%= f.text_area :verschenen %>
+    <div class="parsed" id="parsed_verschenen"></div>
+  </div>
+
+  <div class="field">
+    <%= f.label :eigenaar %>
+    <%= f.text_area :eigenaar %>
+    <div class="parsed" id="parsed_eigenaar"></div>
+  </div>
+
+  <div class="field">
+    <%= f.label :uitgever %>
+    <%= f.text_area :uitgever %>
+    <div class="parsed" id="parsed_uitgever"></div>
+  </div>
+
+  <div class="field">
+    <%= f.label :drukker %>
+    <%= f.text_area :drukker %>
+    <div class="parsed" id="parsed_drukker"></div>
+  </div>
+
+  <div class="field">
+    <%= f.label :uitgave %>
+    <%= f.text_area :uitgave %>
+    <div class="parsed" id="parsed_uitgave"></div>
+  </div>
+
+  <div class="field">
+    <%= f.label :frequentie %>
+    <%= f.text_area :frequentie %>
+  </div>
+
+  <div class="field">
+    <%= f.label :omvang %>
+    <%= f.text_area :omvang %>
+  </div>
+
+  <div class="field">
+    <%= f.label :formaat %>
+    <%= f.text_area :formaat %>
+  </div>
+
+  <div class="field">
+    <%= f.label :oplage %>
+    <%= f.text_area :oplage %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prijzen %>
+    <%= f.text_area :prijzen %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fotos %>
+    <%= f.text_area :fotos %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tekeningen %>
+    <%= f.text_area :tekeningen %>
+  </div>
+
+  <div class="field">
+    <%= f.label :redactie %>
+    <%= f.text_area :redactie %>
+    <div class="parsed" id="parsed_redactie"></div>
+  </div>
+
+  <div class="field">
+    <%= f.label :medewerkers %>
+    <%= f.text_area :medewerkers %>
+    <div class="parsed" id="parsed_medewerkers"></div>
+  </div>
+
+  <div class="field">
+    <%= f.label :speciale %>
+    <%= f.text_area :speciale %>
+  </div>
+
+  <div class="field">
+    <%= f.label :biblio %>
+    <%= f.text_area :biblio %>
+  </div>
+
+  <div class="field">
+    <%= f.label :autopsie %>
+    <%= f.text_area :autopsie %>
+  </div>
+
+  <div class="field">
+    <%= f.label :achtergrond %>
+    <%= f.text_area :achtergrond %>
+  </div>
+
+  <div class="field">
+    <%= f.label :literatuur %>
+    <%= f.text_area :literatuur %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vindplaats %>
+    <%= f.text_area :vindplaats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :notitie %>
+    <%= f.text_area :notitie %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>

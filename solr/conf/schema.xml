@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema name="geoblacklight-schema" version="1.6">
+  <uniqueKey>id</uniqueKey>
+  <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
+ <!--<solrQueryParser defaultOperator="AND"/>-->
+  <fields>
+    <field name="_version_" type="long"   stored="true" indexed="true"/>
+    <field name="timestamp" type="date"   stored="true" indexed="true" default="NOW"/>
+    <field name="id" type="string" stored="true" indexed="true" required="true"/>
+
+		<!-- Special date range -->
+	<field name="verschenen_dtr" type="date_range" indexed="true" stored="true" multiValued="true" /> 
+
+	
+    <!-- core generated fields -->
+    <field name="text" type="text_en" stored="false" indexed="true" multiValued="true"
+                       termVectors="true" termPositions="true" termOffsets="true" />
+
+   <field name="pub_date" type="string" indexed="true" stored="true" multiValued="true"/>
+   <!-- pub_date sort uses new trie-based int fields, which are recommended for any int and are displayable, sortable, and range-quer
+   we use 'tint' for faster range-queries. -->
+	<field name="pub_date_sort" type="tint" indexed="true" stored="true" multiValued="false"/>
+
+    <!-- dynamic field with simple types by suffix -->
+    <dynamicField name="*_b"    type="boolean" stored="true"  indexed="true"/>
+    <dynamicField name="*_d"    type="double"  stored="true"  indexed="true"/>
+    <dynamicField name="*_dt"   type="date"    stored="true"  indexed="true"/>
+    <dynamicField name="*_f"    type="float"   stored="true"  indexed="true"/>
+    <dynamicField name="*_i"    type="int"     stored="true"  indexed="true"/>
+    <dynamicField name="*_im"   type="int"     stored="true"  indexed="true" multiValued="true" />
+    <dynamicField name="*_l"    type="long"    stored="true"  indexed="true"/>
+    <dynamicField name="*_s"    type="string"  stored="true"  indexed="true"/>
+    <dynamicField name="*_ss"   type="string"  stored="true"  indexed="false"/>
+    <dynamicField name="*_si"   type="string"  stored="false" indexed="true"/>
+    <dynamicField name="*_sim"  type="string"  stored="false" indexed="true" multiValued="true" />
+    <dynamicField name="*_sm"   type="string"  stored="true"  indexed="true" multiValued="true" />
+    <dynamicField name="*_url"  type="string"  stored="true"  indexed="false"/>
+    <dynamicField name="*_blob" type="binary"  stored="true"  indexed="false"/>
+
+    <!-- dynamic Text fields by suffix without storage -->
+    <dynamicField name="*_t"    type="text_en" stored="false"  indexed="true"
+                                termVectors="true" termPositions="true" termOffsets="true"/>
+    <dynamicField name="*_tm"   type="text_en" stored="false"  indexed="true" multiValued="true"
+                                termVectors="true" termPositions="true" termOffsets="true"/>
+    <dynamicField name="*_ti"   type="text_en" stored="false" indexed="true"
+                                termVectors="true" termPositions="true" termOffsets="true"/>
+    <dynamicField name="*_tmi"  type="text_en" stored="false" indexed="true" multiValued="true"
+                                termVectors="true" termPositions="true" termOffsets="true"/>
+    <dynamicField name="*_sort" type="text_sort" stored="false" indexed="true" multiValued="false"/>
+
+    <dynamicField name="*spell" type="textSpell" indexed="true" stored="false" multiValued="true" />
+
+    <dynamicField name="*suggest" type="textSuggest" indexed="true" stored="true" multiValued="true" />
+
+	<dynamicField name="*_unstem_search" type="text_general" indexed="true" stored="false" multiValued="true" />
+    <!-- Spatial field types:
+
+         Solr3:
+           <field name="my_pt">83.1,-117.312</field>
+             as (y,x)
+
+         Solr4:
+
+           <field name="my_bbox">-117.312 83.1 -115.39 84.31</field>
+             as (W S E N)
+
+           <field name="my_geom">ENVELOPE(-117.312, -115.39, 84.31, 83.1)</field>
+             as (W E N S)
+
+           <field name="my_jts">POLYGON((1 8, 1 9, 2 9, 2 8, 1 8))</field>
+             as WKT for point, linestring, polygon
+
+      -->
+  </fields>
+
+  <types>
+  	<fieldType name="date_range" class="solr.DateRangeField"/> 
+    <fieldType name="string"  class="solr.StrField"  sortMissingLast="true" />
+    <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
+
+    <fieldType name="int"    class="solr.TrieIntField"     precisionStep="8" positionIncrementGap="0"/>
+    <fieldType name="float"  class="solr.TrieFloatField"   precisionStep="8" positionIncrementGap="0"/>
+    <fieldType name="long"   class="solr.TrieLongField"    precisionStep="8" positionIncrementGap="0"/>
+    <fieldType name="double" class="solr.TrieDoubleField"  precisionStep="8" positionIncrementGap="0"/>
+	<fieldType name="tint" class="solr.TrieIntField" precisionStep="8" omitNorms="true" positionIncrementGap="0"/>
+
+    <!-- The format for this date field is of the form 1995-12-31T23:59:59Z.
+         The trailing "Z" designates UTC time and is mandatory.
+         A Trie based date field for faster date range queries and date faceting. -->
+    <fieldType name="date" class="solr.TrieDateField" precisionStep="6" positionIncrementGap="0"/>
+
+    <!--Binary downloads type. The downloads should be sent/retrieved in as Base64 encoded Strings -->
+    <fieldtype name="binary" class="solr.BinaryField"/>
+
+    <!-- A text field with defaults appropriate for English: it
+         tokenizes with StandardTokenizer, removes English stop words
+         (stopwords_en.txt), down cases, protects words from protwords.txt, and
+         finally applies Porter's stemming.  The query time analyzer
+         also applies synonyms from synonyms.txt. -->
+    <fieldType name="text_en" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_nl.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Dutch"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_nl.txt"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Dutch"/>
+      </analyzer>
+    </fieldType>
+	
+	    <!-- A general text field that has reasonable, generic
+         cross-language defaults: it tokenizes with StandardTokenizer,
+	 removes stop words from case-insensitive "stopwords.txt"
+	 (empty by default), and down cases.  At query time only, it
+	 also applies synonyms. -->
+    <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <!-- in this example, we will only use synonyms at query time
+        <filter class="solr.SynonymFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
+        -->
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- for alpha sorting as a single token -->
+    <fieldType name="text_sort" class="solr.TextField" sortMissingLast="true" omitNorms="true">
+      <analyzer>
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory" />
+        <filter class="solr.TrimFilterFactory" />
+        <filter class="solr.PatternReplaceFilterFactory" pattern="([^a-z0-9 ])" replacement="" replace="all"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- for spell checking -->
+    <fieldType name="textSpell" class="solr.TextField" positionIncrementGap="100" >
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords_en.txt"/>
+        <filter class="solr.StandardFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      </analyzer> 
+    </fieldType>
+
+    <!-- for suggestions -->
+    <fieldType class="solr.TextField" name="textSuggest" positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StandardFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- Spatial field types -->
+    <fieldType name="location" class="solr.LatLonType" subFieldSuffix="_d"/>
+
+    <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType"
+               geo="true" distErrPct="0.025" maxDistErr="0.001" distanceUnits="kilometers"/>
+
+  </types>
+ <!--<defaultSearchField>text</defaultSearchField>-->
+    <!-- spellcheck fields -->
+   <!-- default spell check;  should match fields for default request handler -->
+   <!-- it won't work with a copy of a copy field -->
+   <copyField source="*_s" dest="spell"/>
+   <copyField source="*_sm" dest="spell"/>
+   <copyField source="titel_s" dest="titel_spell"/>
+   <copyField source="personen_sm" dest="personen_spell"/>
+   <copyField source="eigenaar_sm" dest="eigenaar_spell"/>
+   <copyField source="titel_s" dest="titel_unstem_search"/>
+   <copyField source="ondertitel_sm" dest="ondertitel_unstem_search"/>
+   <copyField source="eigenaar_sm" dest="eigenaar_unstem_search"/>
+   <copyField source="personen_sm" dest="personen_unstem_search"/>
+   <copyField source="redactiec_s" dest="redactie_unstem_search"/>
+   <copyField source="medewerkerc_s" dest="medewerker_unstem_search"/>
+   
+    <!-- sort fields -->
+  <!-- PV add titel_sort without stop words -->
+	<!--<copyField source="titel_s" dest="titel_sort"/>-->
+	<copyField source="pub_date" dest="pub_date_sort"/>
+
+   <!-- Suggest fields -->
+   <copyField source="titel_s" dest="text_suggest"/>
+   <!--<copyField source="*ondertitel_sm" dest="text_suggest"/>-->
+   <copyField source="*personen_sm" dest="text_suggest"/>
+   <copyField source="*eigenaar_sm" dest="text_suggest"/>
+   
+   <copyField source="*" dest="text"/>
+</schema>

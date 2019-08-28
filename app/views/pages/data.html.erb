@@ -1,0 +1,38 @@
+<div class="">
+  <h1>Download</h1>
+  Alle records in JSON formaat:
+  <ul class="list-unstyled list-triangle">
+    <li><%= link_to 'Download', root_path << 'data.json', download: '' %></li>
+  </ul>
+  <% url='https://' + request.host + root_path %>
+  <h1>JSON API</h1>
+  Alles (max. 100 tegelijk):
+  <ul class="list-unstyled list-triangle">
+    <li><%= link_to url + 'catalog.json?per_page=100&search_field=all_fields&q=', root_path << 'catalog.json?search_field=all_fieds&q=', download: '' %></li>
+  </ul>
+  Gebruik de <i>page</i> parameter om volgende delen binnen te halen. De parameter <i>per_page</i> zet het aantal per pagina (max. 100):
+  <ul class="list-unstyled list-triangle">
+    <li><%= link_to url + 'catalog.json?page=2&per_page=10&search_field=all_fields&q=', root_path << 'catalog.json?page=2&per_page=10&search_field=all_fieds&q=', download: '' %></li>
+  </ul>
+  Voordeel van deze mehode is dat er een query meegegeven kan worden, bijvoorbeeld op personen:
+  <ul class="list-unstyled list-triangle">
+    <li><%= link_to url + 'catalog.json?search_field=persoon_sm&q=kuyper', root_path << 'catalog.json?search_field=persoon_sm&q=kuyper', download: '' %></li>
+  </ul>
+  <h2>Tekst</h2>
+  De volgende teskstbestanden, gebaseerd op de PDF-bestanden die de basis waren voor de gedrukte versie, zijn als bron voor deze index gebruikt:
+  <ul class="list-unstyled list-triangle">
+    <li><%= link_to 'BNPP deel 1', root_path << 'BNPPDeel1.txt', download: '' %></li>
+    <li><%= link_to 'BNPP deel 2', root_path << 'BNPPDeel2.txt', download: '' %></li>
+    <li><%= link_to 'BNPP deel 3', root_path << 'BNPPDeel3.txt', download: '' %></li>
+    <li><%= link_to 'BNPP deel 4', root_path << 'BNPPDeel4.txt', download: '' %></li>
+    <li><%= link_to 'BNPP deel 5', root_path << 'BNPPDeel5.txt', download: '' %></li>
+    <li><%= link_to 'BNPP deel 6', root_path << 'BNPPDeel6.txt', download: '' %></li>
+    <li><%= link_to 'BNPP deel 7', root_path << 'BNPPDeel7.txt', download: '' %></li>
+    <li><%= link_to 'BNPP deel 8', root_path << 'BNPPDeel8.txt', download: '' %></li>
+  </ul>
+  <h3>Licentie</h3>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative
+  Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+  <h3>Vragen</h3>
+    Heeft u vragen over de data of het gebruik ervan stuur dan gerust een <a href='&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#112;&#46;&#106;&#46;&#109;&#46;&#118;&#111;&#115;&#64;&#118;&#117;&#46;&#110;&#108;'>&#101;&#109;&#97;&#105;&#108;</a>.
+</div>

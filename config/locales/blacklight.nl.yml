@@ -1,0 +1,244 @@
+nl:
+  views:
+    pagination:
+      first: '&laquo; Eerste'
+      last: 'Laatste &raquo;'
+      previous: '&laquo; Vorige'
+      next: 'Volgende &raquo;'
+      truncate: '…'
+
+    pagination_compact:
+      previous: '&laquo; Vorige'
+      next: 'Volgende &raquo;'
+
+  blacklight:
+    application_name: 'BNPP'
+
+    header_links:
+      login: 'Login'
+      logout: 'Uitloggen'
+      bookmarks: 'Favorieten'
+      saved_searches: 'Zoekopdrachten'
+      search_history: 'Geschiedenis'
+
+    welcome: 'Welkom!'
+    and: 'en'
+    or: 'of'
+
+    modal:
+      close: "Sluiten"
+
+    bookmarks:
+      title: 'Favorieten'
+      page_title: 'Favorieten - %{application_name}'
+      no_bookmarks: 'U heeft geen favorieten'
+      add:
+        button: 'Favoriet'
+        success:
+          one: 'Favoriet toevoegen succesvol.'
+          other: 'Favorieten toevoegen succesvol.'
+        failure:  'Sorry, er was een probleem met het opslaan van de favorieten.'
+      remove:
+        button: 'Verwijder favoriet'
+        success: 'Favoriet succesvol verwijderd.'
+        failure: 'Sorry, er was een probleem met het verwijderen van de favorieten.'
+        action_confirm: 'Echt verwijderen?'
+      clear:
+        action_title: 'Alles verwijderen'
+        action_confirm: 'Alle favorieten verwijderen?'
+        success: 'Favorieten verwijderd.'
+        failure: 'Sorry, er was een probleem met het verwijderen van de favorieten.'
+      need_login: 'Log in om uw favorieten te bekijken en bewerken.'
+      list_title: 'Uw favorieten'
+      delete: 'Verwijder'
+
+    saved_searches:
+      add:
+        success: 'Zoekopdracht opgeslagen.'
+        failure: 'Er was een probleem met het opslaan van uw zoekopdracht.'
+      remove:
+        success: 'Opgeslagen zoekopdracht verwijderd.'
+        failure: 'Er was een probleem met het verwijderen van uw zoekopdracht.'
+      clear:
+        action_title: 'Alle opgeslagen zoekopdrachten verwijderen'
+        action_confirm: 'Alle zoekopdrachten verwijderen?'
+        success: 'Opgeslagen zoekopdrachten verwijderd.'
+        failure: 'Er was een probleem met het verwijderen van uw zoekopdrachten.'
+      title: 'Opgeslagen zoekopdrachten'
+      page_title: 'Opgeslgen zoekopdrachten - %{application_name}'
+      need_login: 'Log in om uw opgeslagen zoekopdrachten te bekijken en bewerken.'
+      no_searches: 'U heeft geen opgeslagen zoekopdrachten'
+      list_title: 'Uw opgeslagen zoekopdrachten'
+      delete: 'verwijder'
+
+    search_history:
+      clear:
+        action_title: 'Zoekgeschiedens leegmaken'
+        action_confirm: 'Zoekgeschiedens leegmaken?'
+        success: 'Zoekgeschiedenis leeggemaakt.'
+        failure: 'Er was een probleem met het leegmaken van uw zoekgeschiedenis.'
+      title: 'Zoekgeschiedenis'
+      page_title: 'Zoekgeschiedenis - %{application_name}'
+      no_history: 'U heeft geen zoekgeschiedenis'
+      recent: 'Uw recente zoekopdrachten'
+      forget: 'vergeet'
+      save: 'opslaan'
+
+    tools:
+      title: 'Tools'
+      citation: 'Cite'
+      email: 'E-mail'
+      sms: 'SMS This'
+      clear: 'Clear'
+
+    citation:
+      mla: 'MLA'
+      apa: 'APA'
+      chicago: 'Chicago'
+
+    email:
+      form:
+        title: 'E-mail dit'
+        to: 'To:'
+        message: 'Bericht:'
+        submit: 'Verzenden'
+      text:
+        default_title: 'N/A'
+        title: 'Titel: %{value}'
+        author: 'Redactie: %{value}'
+        format: 'Format: %{value}'
+        language: 'Language: %{value}'
+        subject:
+          one: 'Record: %{title}'
+          other: 'Records'
+        url: 'URL: %{url}'
+        message: 'Bericht: %{message}'
+
+      success: "E-mail Verzonden"
+
+      errors:
+        to:
+          invalid: 'Gebruik een kloppend e-mailadres'
+          blank: 'U moet een ontvanger toevoegen'
+    sms:
+      form:
+        title: 'SMS This'
+        to: 'Phone Number:'
+        carrier: 'Carrier'
+        carrier_prompt: 'Please select your carrier'
+        submit: 'Send'
+      text:
+        title: '%{value}'
+        author: ' by %{value}'
+        url: 'Link: %{url}'
+      success: "SMS Sent"
+      errors:
+        to:
+          invalid: 'You must enter a valid 10 digit phone number'
+          blank: "You must enter a recipient's phone number in order to send this message"
+        carrier:
+          blank: 'You must select a carrier'
+          invalid: "You must enter a valid carrier"
+
+    back_to_search: 'Terug naar Zoeken'
+    back_to_bookmarks: 'Terug naar Favorieten'
+
+    search:
+      # i18n key 'title' is deprecated and will be removed in Blacklight 6.0
+      title: '%{application_name} Zoekresultaten'
+      page_title:
+        title: '%{constraints} - %{application_name} Zoekresultaten'
+        constraint: '%{label}: %{value}'
+        many_constraint_values: '%{values} geselecteerd'
+      search_results_header: 'Zoekbeperkingen'
+      search_results: 'Zoekresultaten'
+      errors:
+        request_error: "Sorry, ik begrijp uw zoekvraag niet."
+        invalid_solr_id: "Sorry, u heeft een record gezocht dat niet bestaat."
+      per_page:
+        label: '%{count}<span class="sr-only"> per pagina</span>'
+        button_label: '%{count} per pagina'
+        title: 'Hoeveelheed resultaten per pagina'
+        submit: 'Update'
+      sort:
+        label: 'Sorteren op %{field}'
+        submit: 'sorteer resultaten'
+      form:
+        search_field:
+          label: 'Zoeken in'
+          title: 'Gericht zoeken'
+          post_label: 'op'
+        search:
+          label: 'zoek op'
+          placeholder: 'Zoek...'
+        submit: 'Zoek'
+      pagination:
+        title: 'Results navigation'
+      pagination_info:
+        no_items_found: 'Geen %{entry_name} gevonden'
+        single_item_found: '<strong>1</strong> %{entry_name} gevonden'
+        pages:
+          one: '<strong>%{start_num}</strong> - <strong>%{end_num}</strong> van <strong>%{total_num}</strong>'
+          other: '<strong>%{start_num}</strong> - <strong>%{end_num}</strong> van <strong>%{total_num}</strong>'
+      entry_pagination_info:
+        one: '<strong>1 van 1</strong>'
+        other: '<strong>%{current}</strong> van <strong>%{total}</strong>'
+      documents:
+        counter: '%{counter}. '
+      facets:
+        title: 'Beperk uw zoekopdracht'
+        clear: 'Verwijder Filter'
+        sort:
+          count: 'Numeriek Sorteren'
+          index: 'A-Z Sort'
+        count: '%{number}'
+        more_html: 'meer <span class="sr-only">%{field_name}</span> »'
+        selected:
+          remove: '[verwideren]'
+        missing: "[Ontbreekt]"
+      group:
+        more: 'meer »'
+      filters:
+        title: 'U heeft gezocht op:'
+        label: '%{label}:'
+        remove:
+          value: 'Verwijder beperking %{value}'
+          label_value: 'Verwijder beperking %{label}: %{value}'
+      start_over: 'Begin Opnieuw'
+      index:
+        label: '%{label}:'
+      show:
+        title: '%{document_title} - %{application_name}'
+        label: '%{label}:'
+      rss_feed: 'RSS van resultaten'
+      atom_feed: 'Atom van resultaten'
+      bookmarks:
+        present: "In Favorieten"
+        absent: "Favoriet"
+        inprogress: "Opslaan..."
+      zero_results:
+        title: "Geen resultaten gevonden"
+        modify_search: "Probeer uw zoekopdracht aan te passen"
+        use_fewer_keywords: "Gebruik minder termen, verfijn dan uw zoekopdracht met de links aan de linkerzijde."
+        search_fields: "u heeft gezocht op %{search_fields}"
+        search_everything: "probeer alles te doorzoeken"
+      view_title: "Resultaten bekijken als: "
+      view:
+        list: "Lijst"
+
+    entry_name:
+      default: 'record'
+
+    did_you_mean: 'Bedoelde u soms: %{options}?'
+
+  blacklight_advanced_search:
+    all: alles
+    any: iets
+    form:
+      title: Meer Zoekopties
+      search_context: Binnen zoekresultaten
+      limit_criteria_heading_html: "<strong>EN</strong> deze attributen hebben"
+      query_criteria_heading_html: "Vindt records die %{select_menu} matchen van"
+      sort_label: "Sorteren op"
+      start_over: "Opnieuw beginnen"
+      search_btn: 'Zoek'

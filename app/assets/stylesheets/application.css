@@ -1,0 +1,234 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ 
+ *= require 'blacklight_advanced_search'
+ *= require font-awesome
+*/
+
+body {
+    text-align: left;
+}
+
+/* Sortable tables */
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+    content: " \25B4\25BE"
+}
+
+#recordTable {
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+#recordTable .fit {
+    min-width: 140px;
+}
+
+table .absorbing-column {
+    width: 100%;
+}
+
+#header-navbar .navbar-brand {
+    width: 400px;
+    height: 75px;
+
+    background: transparent url("VUlogo_VU_HDC_RGB_wit_tcm215-852540.svg") no-repeat top left;
+    background-size: 400px 75px;
+    margin-right: 10px;
+}
+
+.header-title {
+    margin-top: 10px;
+    font-size: 24px;
+    text-align: left;
+    font-family: "Roboto Condensed";
+    font-weight: 400;
+    padding-left: 5px;
+}
+
+@media(max-width: 768px) {
+    .header-title {
+        font-size: 18px;
+    }
+    #header-navbar .navbar-brand {
+        width: 333px;
+        height: 50px;
+        background-size: 333px 50px;
+    }
+}
+
+.navbar-right {
+    margin-top: 5px;
+}
+
+
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+.navbar-default {
+    background-color: rgb(225,225,225);
+}
+
+.navbar-brand {
+    background: none;
+    font-weight:bold;
+
+    vertical-align: middle;
+    font-size:36px;
+}
+
+@media(max-width: 480px) {
+    .navbar-brand {
+        font-size: 24px;
+        height: 75px;
+    }
+}
+
+.navbar-inverse {
+    padding: 16px 0 10px 0;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #FFFFFF;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: rgb(0, 137, 207);
+    background-color: rgb(207,239,255);
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: rgb(0, 137, 207);
+    /*border-left: 1px solid rgb(0, 137, 207);*/
+    border-right: 1px solid rgb(0, 137, 207);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.navbar-inverse .navbar-nav:first-child > li:first-child > a {
+    border-left: 1px solid rgb(0, 137, 207);
+}
+
+.navbar-inverse {
+    /*background-color: rgb(0, 136, 205);*/
+    background-color: white;
+    border: none;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: rgb(0, 137, 207);
+}
+
+.navbar-inverse .navbar-toggle .icon-bar{
+    background-color: rgb(0, 137, 207);
+}
+
+
+.jumbotron {
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: rgb(221, 75, 57);
+    border-color: rgb(204, 204, 204);
+}
+
+.category-block {
+    min-height: 300px;
+}
+
+.category-block .category-icon .glyphicon {
+    color: #565347;
+}
+
+.document-title-heading a, .document-counter {
+    font-family: "Roboto Condensed";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+.list-triangle li {
+    padding-left: 10px;
+    position: relative;
+    line-height: 3rem;
+}
+
+.list-triangle li::before {
+    content: '\f054';
+    font-family: 'FontAwesome';
+    font-size: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    position: absolute;
+    color: #0089CF;
+}
+
+.site-footer {
+    margin-top: 50px;
+    padding-bottom: 10px;
+    background-color: rgb(225, 225, 225);
+    font-family: "Roboto Condensed";
+}
+
+
+.site-footer .footer-links ul {
+    list-style: none;
+}
+
+.site-footer .attribution {
+    float: right;
+}
+
+#footer-logos {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+#footer-logos img {
+    height: 90px;
+}
+
+.footer-menu {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.footer-menu a {
+    color: #707070 !important;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    text-decoration-color: rgb(112, 112, 112);
+
+}
+

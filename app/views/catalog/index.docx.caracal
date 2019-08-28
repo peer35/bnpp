@@ -1,0 +1,53 @@
+@document_list.each_with_index do |document, document_counter|
+  docx.h2 document[:titel_s]
+  docx.p 'BNPP online', bold: true
+  url='https://bnpp.hdc.vu.nl/catalog/' + document[:id]
+  docx.p do
+    link url, url
+  end
+  docx.p 'Ondertitel', bold: true
+  docx.p document[:ondertitelc_s]
+  docx.p 'Categorie', bold: true
+  docx.p document[:categorie_s]
+  docx.p 'Verschenen', bold: true
+  docx.p document[:verschenen_s]
+  docx.p 'Eigenaar', bold: true
+  docx.p document[:eigenaarc_s]
+  docx.p 'Uitgever', bold: true
+  docx.p document[:uitgeverc_s]
+  docx.p 'Drukker', bold: true
+  docx.p document[:drukkerc_s]
+  docx.p 'Plaats van Uitgave', bold: true
+  docx.p document[:uitgavec_s]
+  docx.p 'Frequentie', bold: true
+  docx.p document[:frequentie_s]
+  docx.p 'Omvang', bold: true
+  docx.p document[:omvang_s]
+  docx.p 'Formaat', bold: true
+  docx.p document[:formaat_s]
+  docx.p 'Oplage', bold: true
+  docx.p document[:oplage_s]
+  docx.p 'Prijzen', bold: true
+  docx.p document[:prijzen_s]
+  docx.p 'Foto\'s', bold: true
+  docx.p document[:fotos_s]
+  docx.p 'Tekeningen', bold: true
+  docx.p document[:tekeningen_s]
+  docx.p 'Redactie', bold: true
+  docx.p document[:redactiec_s]
+  docx.p 'Medewerkers', bold: true
+  docx.p document[:medewerkersc_s]
+  docx.p 'Speciale nummers', bold: true
+  docx.p document[:speciale_s]
+  docx.p 'Bibliografische gegevens', bold: true
+  docx.p document[:biblio_s]
+  docx.p 'Autopsie', bold: true
+  docx.p document[:autopsie_s]
+  docx.p 'Achtergrond', bold: true
+  docx.p document[:achtergrond_s]
+  docx.p 'Literatuur', bold: true
+  docx.p document[:literatuur_s]
+  docx.p 'Vindplaats', bold: true
+  docx.p document[:vindplaats_s]
+  docx.p
+end
