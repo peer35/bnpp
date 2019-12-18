@@ -56,4 +56,8 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.i18n.default_locale = :nl
+
+  # prevent host header injection
+  config.action_controller.default_url_options = {host: "pvsge048.labs.vu.nl"}
+  config.action_controller.asset_host = "pvsge048.labs.vu.nl"
 end

@@ -19,9 +19,3 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-
-sitemap.xml
-sitemap.xml.gz
-/config/initializers/records.rb
-/.idea
-/.svn

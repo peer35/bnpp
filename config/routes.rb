@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
 
-  get 'advanced' => 'advanced#index', as: 'advanced_search' # bug in advanced search
-
   Blacklight::Marc.add_routes(self)
   root to: "catalog#index"
     concern :searchable, Blacklight::Routes::Searchable.new
@@ -32,7 +30,7 @@ Rails.application.routes.draw do
   get '/about' => 'pages#about'
   get '/data' => 'pages#data', :as => 'data' # the :as generates method data_path
 
-  post '/validate' => 'records#validate', :as => 'validate'
+  post '/validate' => 'records#validate'
   get '/validate' => 'records#validate'
 
   resource :records do
