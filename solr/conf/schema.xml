@@ -2,7 +2,7 @@
 <schema name="geoblacklight-schema" version="1.6">
   <uniqueKey>id</uniqueKey>
   <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
- <solrQueryParser defaultOperator="AND"/>
+ <!-- <solrQueryParser defaultOperator="AND"/> deprecated -->
   <fields>
     <field name="_version_" type="long"   stored="true" indexed="true"/>
     <field name="timestamp" type="date"   stored="true" indexed="true" default="NOW"/>
@@ -173,7 +173,7 @@
                geo="true" distErrPct="0.025" maxDistErr="0.001" distanceUnits="kilometers"/>
 
   </types>
- <defaultSearchField>text</defaultSearchField>
+ <!--<defaultSearchField>text</defaultSearchField> deprecated -->
     <!-- spellcheck fields -->
    <!-- default spell check;  should match fields for default request handler -->
    <!-- it won't work with a copy of a copy field -->
