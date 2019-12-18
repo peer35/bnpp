@@ -36,6 +36,8 @@ class CatalogController < ApplicationController
     }
 		#config.spell_max=10
 
+		config.add_field_configuration_to_solr_request! # for highlighting
+
 		config.index.respond_to.docx = true
 
 
@@ -123,7 +125,7 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-	config.add_index_field 'ondertitelc_s', label: 'Ondertitel'
+	config.add_index_field 'ondertitelc_s', label: 'Ondertitel', :highlight => true
 	config.add_index_field 'eigenaarc_s', label: 'Eigenaar'
 	config.add_index_field 'verschenen_s', label: 'Verschenen'
 
@@ -148,7 +150,7 @@ class CatalogController < ApplicationController
 	config.add_show_field 'redactiec_s', label: 'Redactie', :helper_method => :linebreak_helper
 	config.add_show_field 'medewerkersc_s', label: 'Medewerkers', :helper_method => :linebreak_helper
 	config.add_show_field 'speciale_s', label: 'Speciale nummers', :helper_method => :linebreak_helper
-	config.add_show_field 'biblio_s', label: 'Bibliografische gegevens', :helper_method => :linebreak_helper
+	config.add_show_field 'biblio_s', label: 'Bibliografische gegevens', :helper_method => :vv_helper
 	config.add_show_field 'autopsie_s', label: 'Autopsie', :helper_method => :linebreak_helper
 	config.add_show_field 'achtergrond_s', label: 'Achtergrond', :helper_method => :linebreak_helper
 	config.add_show_field 'literatuur_s', label: 'Literatuur', :helper_method => :linebreak_helper

@@ -5,16 +5,25 @@
 
     document.addEventListener('turbolinks:load', ready);
     function ready() {
-            parse_verschenen();
-            parse_redactie();
-            parse_medewerkers();
-            parse_eigenaar();
-            parse_uitgever();
-            parse_drukker();
-            parse_uitgave();
-            parse_ondertitel();
+            parse_value('verschenen', 'verschenen');
+            parse_value('omvang', 'omvang');
+            parse_value('persoon', 'redactie');
+            parse_value('persoon', 'medewerkers');
+            parse_value('rest', 'eigenaar');
+            parse_value('rest', 'uitgever');
+            parse_value('rest', 'drukker');
+            parse_value('rest', 'uitgave');
+            parse_value('rest', 'ondertitel');
+            parse_value('categorie', 'categorie');
+
             $('#record_verschenen').on('input selectionchange propertychange', function () {
                 parse_verschenen();
+            });
+            $('#record_categorie').on('input selectionchange propertychange', function () {
+              parse_categorie();
+            });
+            $('#record_categorie').on('input selectionchange propertychange', function () {
+              parse_omvang();
             });
             $('#record_redactie').on('input selectionchange propertychange', function () {
                 parse_redactie();
@@ -47,11 +56,11 @@
                 'teststr': teststr
             },
             function (data) {
-                html='<table>';
-                trs='';
+                var html='<table>';
+                var trs='';
                 for (var i in data) {
                     trs+='<tr>';
-                    th='<tr>';
+                    var th='<tr>';
                     for (var k in data[i]) {
                         th += '<th>'+k+'</th>';
                         val=' - ';
@@ -76,45 +85,11 @@
 
     }
 
-    function parse_redactie(){
-        var test=$('#record_redactie').val();
-        validate(test, 'persoon','#parsed_redactie');
+    function parse_value(type, field){
+        var test=$('#record_' + field).val();
+        validate(test, type, '#parsed_' + field);
     }
 
-    function parse_medewerkers(){
-        var test=$('#record_medewerkers').val();
-        validate(test, 'persoon','#parsed_medewerkers');
-    }
-
-    function parse_verschenen(){
-        var test=$('#record_verschenen').val();
-        validate(test, 'verschenen','#parsed_verschenen');
-    }
-
-    function parse_eigenaar(){
-        var test=$('#record_eigenaar').val();
-        validate(test, 'rest','#parsed_eigenaar');
-    }
-
-    function parse_uitgever(){
-        var test=$('#record_uitgever').val();
-        validate(test, 'rest','#parsed_uitgever');
-    }
-
-    function parse_drukker() {
-        var test = $('#record_drukker').val();
-        validate(test, 'rest', '#parsed_drukker');
-    }
-
-    function parse_uitgave() {
-        var test = $('#record_uitgave').val();
-        validate(test, 'rest', '#parsed_uitgave');
-    }
-
-    function parse_ondertitel() {
-        var test = $('#record_ondertitel').val();
-        validate(test, 'rest', '#parsed_ondertitel');
-    }
 </script>
 
 <div class="record-form">
@@ -145,36 +120,43 @@
   <div class="field">
     <%= f.label :categorie %>
     <%= f.text_area :categorie %>
+    <div class="parsed" id="parsed_categorie"></div>
+    <div class="info">De waardes onder value worden aan de zoekfacet toegevoegd</div>
   </div>
 
   <div class="field">
     <%= f.label :verschenen %>
     <%= f.text_area :verschenen %>
     <div class="parsed" id="parsed_verschenen"></div>
+    <div class="info">De waarde 'van' wordt toegegevoegd als datum (pub_date) tbv sortering, de waardes 'van' - 'tot' worden toegevoegd als date range (verschenen_dtr) voor zoeken op jaar</div>
   </div>
 
   <div class="field">
     <%= f.label :eigenaar %>
     <%= f.text_area :eigenaar %>
     <div class="parsed" id="parsed_eigenaar"></div>
+    <div class="info">De waardes onder value worden aan de zoekfacet toegevoegd</div>
   </div>
 
   <div class="field">
     <%= f.label :uitgever %>
     <%= f.text_area :uitgever %>
     <div class="parsed" id="parsed_uitgever"></div>
+    <div class="info">De waardes onder value worden aan de zoekfacet toegevoegd</div>
   </div>
 
   <div class="field">
     <%= f.label :drukker %>
     <%= f.text_area :drukker %>
     <div class="parsed" id="parsed_drukker"></div>
+    <div class="info">De waardes onder value worden aan de zoekfacet toegevoegd</div>
   </div>
 
   <div class="field">
     <%= f.label :uitgave %>
     <%= f.text_area :uitgave %>
     <div class="parsed" id="parsed_uitgave"></div>
+    <div class="info">De waardes onder value worden aan de zoekfacet toegevoegd</div>
   </div>
 
   <div class="field">
@@ -185,6 +167,8 @@
   <div class="field">
     <%= f.label :omvang %>
     <%= f.text_area :omvang %>
+    <div class="parsed" id="parsed_omvang"></div>
+    <div class="info">De waardes onder value worden aan de zoekfacet toegevoegd</div>
   </div>
 
   <div class="field">
@@ -216,12 +200,14 @@
     <%= f.label :redactie %>
     <%= f.text_area :redactie %>
     <div class="parsed" id="parsed_redactie"></div>
+    <div class="info">De waardes onder naam worden aan de zoekfacet 'persoon' toegevoegd</div>
   </div>
 
   <div class="field">
     <%= f.label :medewerkers %>
     <%= f.text_area :medewerkers %>
     <div class="parsed" id="parsed_medewerkers"></div>
+    <div class="info">De waardes onder naam worden aan de zoekfacet 'persoon' toegevoegd</div>
   </div>
 
   <div class="field">
