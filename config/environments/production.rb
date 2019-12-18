@@ -23,12 +23,9 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :sendmail
   # Default Mailer Host
-  #Rails.application.routes.default_url_options[:host] = 'pvsge081.labs.vu.nl'
-  # prevent host header injection
-  config.action_controller.default_url_options = {host: "bnpp.hdc.vu.nl"}
-  config.action_mailer.default_url_options = {host: "bnpp.hdc.vu.nl"}
+  Rails.application.routes.default_url_options[:host] = 'pvsge081.labs.vu.nl'
 
-      # Disable serving static files from the `/public` folder by default since
+  # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   #config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
@@ -55,8 +52,6 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
-
-
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.

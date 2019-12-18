@@ -8,6 +8,31 @@
 @import 'blacklight/blacklight';
 @import 'blacklight_marc';
 
+/* Sortable tables */
+table.sortable thead {
+  background-color:#eee;
+  color:#666666;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+  content: " \25B4\25BE"
+}
+
+#recordTable {
+  table-layout: auto;
+  border-collapse: collapse;
+  width: 100%;
+}
+#recordTable .fit {
+  min-width: 140px;
+}
+
+table .absorbing-column {
+  width: 100%;
+}
+
 .field {
   display: inline-block;
   width: 100%;
@@ -56,6 +81,10 @@ textarea {
   padding-left:10px;
   padding-right:10px;
   font-size: 0.9em;
+}
 
+.info {
+  font-size: 0.8em;
+  color: darkgrey;
 }
 

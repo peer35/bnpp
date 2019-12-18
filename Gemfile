@@ -64,7 +64,7 @@ gem 'blacklight-marc', '~> 6.1'
 
 gem "blacklight_advanced_search"
 gem "font-awesome-rails"
-gem 'pg', '=0.20'
+gem 'pg', '>0.20'
 
 gem 'paper_trail', '>7.0'
 gem 'pundit'
@@ -72,5 +72,3 @@ gem 'pundit'
 # generate docx
 gem 'caracal'
 gem 'caracal-rails'
-
-gem 'sitemap_generator'

@@ -119,6 +119,10 @@ class RecordsController < ApplicationController
       parsed = validate_rest(params[:teststr])
     elsif params[:type] == 'verschenen'
       parsed[0] = parse_verschenen(params[:teststr])
+    elsif params[:type] == 'categorie'
+      parsed = validate_categorie(params[:teststr])
+    elsif params[:type] == 'omvang'
+      parsed = validate_omvang(params[:teststr])
     end
     render json: parsed
   end
@@ -152,7 +156,6 @@ class RecordsController < ApplicationController
   end
 
   private
-  # parsers should be in the model
   def parse_persoon(val)
     val = val.gsub(/[´'‛’`‘`]/, "'")
     s = val.split(':')
@@ -264,6 +267,26 @@ class RecordsController < ApplicationController
       parsed['tot'] = m[0]
     end
     return parsed
+  end
+
+  def validate_categorie(val)
+    list=[]
+    cats=parse_categorie(val)
+    for val in cats
+      logger.debug val
+      list.append({'value' => val})
+    end
+    return list
+  end
+
+  def validate_omvang(val)
+    list=[]
+    cats=parse_omvang(val)
+    for val in cats
+      logger.debug val
+      list.append({'value' => val})
+    end
+    return list
   end
 
   def validate_rest(val)

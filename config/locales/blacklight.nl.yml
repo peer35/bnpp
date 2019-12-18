@@ -227,7 +227,7 @@ nl:
         list: "Lijst"
 
     entry_name:
-      default: 'record'
+      default: 'element'
 
     did_you_mean: 'Bedoelde u soms: %{options}?'
 
