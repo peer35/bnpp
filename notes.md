@@ -4,13 +4,10 @@ sudo apt update
 sudo apt install -y docker docker-compose
 
 #make volumes
-sudo mkdir /docker
-mkdir /docker/bnpp
-mkdir /docker/bnpp/log
-mkdir /docker/bnpp/db
-mkdir /docker/bnpp/solr
-mkdir /docker/bnpp/solr/config/
-mkdir /docker/bnpp/solr/data/
+mkdir /docker/bnpp/log -p
+mkdir /docker/bnpp/db -p
+mkdir /docker/bnpp/solr/config -p
+mkdir /docker/bnpp/solr/data -p
 sudo chmod 777 -R /docker # that's not right, map all to a bnpp account?
 ```
 
@@ -37,12 +34,12 @@ sudo docker-compose up -d bnpp-db
 cat bnpp_production25.dump | sudo docker exec -i bnpp-db psql -U blacklight -d bnpp
 ```
 
-# Build the rest and see if it starts successfully
+- Build the rest and see if it starts successfully
 ```
 sudo docker-compose up
 ```
 
-- Start the cointainers normally
+- To start the cointainers normally
 ```        
 sudo docker-compose up -d
 ```
