@@ -41,7 +41,7 @@ services:
     ports:
       - "3000:3000"
     entrypoint: ["/usr/src/app/lib/docker-entrypoint.sh"]
-    command: sh -c "bin/delayed_job start && bin/rails server -e production -b 0.0.0.0"
+    command: sh -c "bin/rails server -e production -b 0.0.0.0"
 
   bnpp-db:
     container_name: ${DB_HOST}
