@@ -16,6 +16,8 @@ ENV ENV_RAILS=production
 RUN bundle install
 COPY . .
 RUN chmod +x /usr/src/app/lib/docker-entrypoint.sh && bundle exec rake app:update:bin
+ENTRYPOINT ["/usr/src/app/lib/docker-entrypoint.sh"]
+CMD sh -c "bin/rails server -e production -b 0.0.0.0"
 
 EXPOSE 3000
 

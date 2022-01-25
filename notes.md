@@ -1,3 +1,4 @@
+- Make sure bl-solr is running
 ```
 #Migration:
 sudo apt update
@@ -6,11 +7,8 @@ sudo apt install -y docker docker-compose
 #make volumes
 mkdir /docker/bnpp/log -p
 mkdir /docker/bnpp/db -p
-mkdir /docker/bnpp/solr/config -p
-mkdir /docker/bnpp/solr/data -p
 sudo chmod 777 -R /docker # that's not right, map all to a bnpp account?
 ```
-
 
 ```
 # get the code
@@ -18,9 +16,17 @@ git clone https://github.com/peer35/bnpp
 cd bnpp
 git checkout docker
 
-# copy the config to '/docker/bnpp/solr/config/
-cp -r solr/conf/* /docker/bnpp/solr/config/
 ```
+
+- If fresh solr config, this should create a fresh core:
+```
+#delete existing core
+sudo docker-compose exec solr bin/solr delete -c bnpp-core
+sudo docker-compose stop solr
+cp -r solr/conf/* /docker/bnpp/solr/config/
+sudo docker-compose up -d solr
+```
+
 - Set sensible data in .env, use `rails generate secret`
 `nano .env`
 
