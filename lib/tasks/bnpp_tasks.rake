@@ -8,7 +8,7 @@ namespace :bnpp_tasks do
     $VERBOSE = nil
 
     solr_config = Rails.application.config_for :blacklight
-    class_variable_set(:@@solr, RSolr.connect(:url => solr_config['url'])) # get this from blacklight config
+    @@solr = RSolr.connect :url => solr_config['url'] # get this from blacklight config
 
     #TODO move this shit to the model
     def parse_persoon(val)
