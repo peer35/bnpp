@@ -156,9 +156,10 @@ nl:
         request_error: "Sorry, ik begrijp uw zoekvraag niet."
         invalid_solr_id: "Sorry, u heeft een record gezocht dat niet bestaat."
       per_page:
+        aria_label: 'Hoeveelheid resultaten per pagina'
         label: '%{count}<span class="sr-only"> per pagina</span>'
         button_label: '%{count} per pagina'
-        title: 'Hoeveelheed resultaten per pagina'
+        title: 'Hoeveelheid resultaten per pagina'
         submit: 'Update'
       sort:
         label: 'Sorteren op %{field}'
