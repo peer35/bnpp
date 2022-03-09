@@ -23,7 +23,8 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :sendmail
   # Default Mailer Host
-  Rails.application.routes.default_url_options[:host] = 'pvsge081.labs.vu.nl'
+  config.action_controller.default_url_options = {host: ENV["SITE_NAME"]}
+  config.action_mailer.default_url_options = {host: ENV["SITE_NAME"]}
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
