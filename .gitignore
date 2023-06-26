@@ -13,11 +13,20 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
+!/tmp
 /tmp/*
 !/log/.keep
+!/tmp/uploads
 !/tmp/.keep
+
 
 # Ignore Byebug command history file.
 .byebug_history
 
+sitemap.xml
+sitemap.xml.gz
+/config/initializers/records.rb
+/.idea
+/.svn
 .env
+db/seeds_update.rb
