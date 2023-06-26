@@ -1,0 +1,53 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bnpp_id: MyString
+  titel: MyText
+  ondertitel: MyText
+  categorie: MyText
+  verschenen: MyText
+  eigenaar: MyText
+  uitgever: MyText
+  drukker: MyText
+  uitgave: MyText
+  frequentie: MyText
+  omvang: MyText
+  formaat: MyText
+  oplage: MyText
+  prijzen: MyText
+  fotos: MyText
+  tekeningen: MyText
+  redactie: MyText
+  medewerkers: MyText
+  speciale: MyText
+  biblio: MyText
+  autopsie: MyText
+  achtergrond: MyText
+  literatuur: MyText
+  vindplaats: MyText
+
+two:
+  bnpp_id: MyString
+  titel: MyText
+  ondertitel: MyText
+  categorie: MyText
+  verschenen: MyText
+  eigenaar: MyText
+  uitgever: MyText
+  drukker: MyText
+  uitgave: MyText
+  frequentie: MyText
+  omvang: MyText
+  formaat: MyText
+  oplage: MyText
+  prijzen: MyText
+  fotos: MyText
+  tekeningen: MyText
+  redactie: MyText
+  medewerkers: MyText
+  speciale: MyText
+  biblio: MyText
+  autopsie: MyText
+  achtergrond: MyText
+  literatuur: MyText
+  vindplaats: MyText
