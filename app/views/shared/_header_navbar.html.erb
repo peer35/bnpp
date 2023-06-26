@@ -25,6 +25,6 @@
 
 <div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="<%= container_classes %>">
-    <%= render Blacklight::SearchBarComponent.new  %>
+    <%= render blacklight_config.header_component.new(blacklight_config: blacklight_config) %>
   </div>
 </div>
