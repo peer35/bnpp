@@ -30,3 +30,4 @@ sitemap.xml.gz
 /.svn
 .env
 db/seeds_update.rb
+config/initializers/admins.rb
