@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
-  config.advanced_search[:enabled] = true
-
   include Blacklight::Catalog  #include Blacklight::Marc::Catalog
 
  
@@ -271,5 +269,6 @@ class CatalogController < ApplicationController
     config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark', if: :render_bookmarks_control?)
     config.add_nav_action(:search_history, partial: 'blacklight/nav/search_history')
 
+    config.advanced_search[:enabled] = true
   end
 end
