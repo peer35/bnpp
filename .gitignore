@@ -31,3 +31,5 @@ sitemap.xml.gz
 .env
 db/seeds_update.rb
 config/initializers/admins.rb
+
+public/assets

@@ -80,20 +80,20 @@ body {
     }
 }
 
-.navbar-inverse {
+.navbar-inverse, .navbar {
     padding: 16px 0 10px 0;
 }
 
-.navbar-inverse .navbar-brand {
+.navbar .navbar-brand {
     color: #FFFFFF;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+.navbar .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
     color: rgb(0, 137, 207);
     background-color: rgb(207,239,255);
 }
 
-.navbar-inverse .navbar-nav > li > a {
+.navbar-nav > li > a {
     color: rgb(0, 137, 207);
     /*border-left: 1px solid rgb(0, 137, 207);*/
     border-right: 1px solid rgb(0, 137, 207);
@@ -101,21 +101,21 @@ body {
     padding-right: 10px;
 }
 
-.navbar-inverse .navbar-nav:first-child > li:first-child > a {
+.navbar .navbar-nav:first-child > li:first-child > a {
     border-left: 1px solid rgb(0, 137, 207);
 }
 
-.navbar-inverse {
+.navbar {
     /*background-color: rgb(0, 136, 205);*/
     background-color: white;
     border: none;
 }
 
-.navbar-inverse .navbar-toggle {
+.navbar .navbar-toggle {
     border-color: rgb(0, 137, 207);
 }
 
-.navbar-inverse .navbar-toggle .icon-bar{
+.navbar .navbar-toggle .icon-bar{
     background-color: rgb(0, 137, 207);
 }
 
@@ -152,7 +152,7 @@ body {
 .list-triangle li {
     padding-left: 10px;
     position: relative;
-    line-height: 3rem;
+    /*line-height: 3rem;*/
 }
 
 .list-triangle li::before {
@@ -204,5 +204,89 @@ body {
     font-weight: 400;
     line-height: 30px;
     text-decoration-color: rgb(112, 112, 112);
+}
+
+.facet-limit {
+    margin-bottom: 0px;
+}
+
+/* Sortable tables */
+table.sortable thead {
+  background-color:#eee;
+  color:#666666;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+  content: " \25B4\25BE"
+}
+
+#recordTable {
+  table-layout: auto;
+  border-collapse: collapse;
+  width: 100%;
+}
+#recordTable .fit {
+  min-width: 140px;
+}
+
+table .absorbing-column {
+  width: 100%;
+}
+
+.field {
+  display: inline-block;
+  width: 100%;
+}
+
+.parsed {
+  float: right;
+  width: 50%;
+  padding-left: 10px;
+  font-style: italic;
+  color: darkgrey;
+  font-size: 0.9em;
+}
+
+.parsed th {
+  margin-bottom: 4px;
+}
+.parsed table, th {
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+.parsed td, th {
+
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  padding: 0px 5px 0px 5px;
+
+}
+
+.parsed table {
+  width:100%;
+  margin-top: -18px;
+}
+.record-form .field {
+  border: 1px dotted grey;
+  padding: 15px;
+}
+
+label {
+  display: block;
+}
+
+textarea {
+  width: 50%;
+  min-height: 50px;
+  padding-left:10px;
+  padding-right:10px;
+  font-size: 0.9em;
+}
+
+.info {
+  font-size: 0.8em;
+  color: darkgrey;
 }
 

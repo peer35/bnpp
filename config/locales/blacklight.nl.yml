@@ -13,7 +13,24 @@ nl:
 
   blacklight:
     application_name: 'BNPP'
-
+    advanced_search:
+      all: alles
+      any: iets
+      must: alles
+      should: iets
+      page_title: 'Geavanceerd zoeken - %{application_name}'
+      more_options: 'Meer Opties'
+      form:
+        title: Meer Zoekopties
+        search_context: Binnen zoekresultaten
+        limit_criteria_heading_html: "<strong>EN</strong> deze attributen hebben"
+        query_criteria_heading_html: "Vindt records die %{select_menu} matchen van"
+        sort_label: "Sorteren op"
+        search_btn_html: 'Zoek'
+        start_over_html: 'Opnieuw beginnen'	
+        must: alles
+        should: iets
+    
     header_links:
       login: 'Login'
       logout: 'Uitloggen'
@@ -24,6 +41,8 @@ nl:
     welcome: 'Welkom!'
     and: 'en'
     or: 'of'
+    must: moeten
+    should: kunnen
 
     modal:
       close: "Sluiten"
@@ -232,14 +251,4 @@ nl:
 
     did_you_mean: 'Bedoelde u soms: %{options}?'
 
-  blacklight_advanced_search:
-    all: alles
-    any: iets
-    form:
-      title: Meer Zoekopties
-      search_context: Binnen zoekresultaten
-      limit_criteria_heading_html: "<strong>EN</strong> deze attributen hebben"
-      query_criteria_heading_html: "Vindt records die %{select_menu} matchen van"
-      sort_label: "Sorteren op"
-      start_over: "Opnieuw beginnen"
-      search_btn: 'Zoek'
+

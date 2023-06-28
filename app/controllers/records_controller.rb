@@ -12,7 +12,7 @@ class RecordsController < ApplicationController
 
   before_action :set_paper_trail_whodunnit
 
-  before_action :require_user_authentication_provider
+  #before_action :require_user_authentication_provider
   before_action :verify_user
 
   solr_config = Rails.application.config_for :blacklight

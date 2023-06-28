@@ -1,30 +1,26 @@
-<div id="header-navbar" class="navbar navbar-inverse navbar-static-top" role="navigation">
+<nav id="header-navbar" class="navbar navbar-expand-md navbar-static-top" role="navigation">
   <div class="<%= container_classes %>">
+    <!--<%= link_to application_name, root_path, class: 'mb-0 navbar-brand navbar-logo' %>-->
     <div class="navbar-header">
-    <button type="button" class="navbar-toggle btn collapsed" data-toggle="collapse" data-target="#user-util-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <%= link_to application_name, root_path, class: "navbar-brand" %>
-    </div>
-
-    <div class="collapse navbar-collapse" id="user-util-collapse">
-      <%= render :partial=>'/user_util_links' %>
-    </div>
-    <% if Rails.env.development? %>
-        <div class="header-title" style="color: red;">BNPP TEST: Ga voor een stabiele versie naar
-          <a href="https://discovery.labs.vu.nl/bnpp">https://discovery.labs.vu.nl/bnpp</a></div>
-    <% else %>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#user-util-collapse" data-bs-target="#user-util-collapse" aria-controls="user-util-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <%= link_to "", root_path, class: "navbar-brand" %>
         <div class="header-title">Bibliografie van Nederlandse Protestantse Periodieken</div>
-    <% end %>
+    </div>
+    <div class="collapse navbar-collapse justify-content-md-end" id="user-util-collapse">
+      <%= render 'shared/user_util_links' %>
+    </div>
   </div>
+</nav>
 
-</div>
-
-<div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="<%= container_classes %>">
-    <%= render_search_bar  %>
+<%= content_tag :div, class: 'navbar-search navbar navbar-light bg-light', role: 'navigation', aria: { label: t('blacklight.search.header') } do %>
+  <div class="<%= container_classes %>">
+    <%= render((blacklight_config&.view_config(document_index_view_type)&.search_bar_component ||Blacklight::SearchBarComponent).new(
+          url: search_action_url,
+          advanced_search_url: search_action_url(controller: :catalog, action: 'advanced_search'),
+          params: search_state.params_for_search.except(:qt),
+          autocomplete_path: search_action_path(controller: :catalog, action: :suggest)
+          ))  %>
   </div>
-</div>
+<% end %>
