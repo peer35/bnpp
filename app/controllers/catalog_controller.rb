@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
+  config.advanced_search[:enabled] = true
 
   include Blacklight::Catalog  #include Blacklight::Marc::Catalog
 
-  ## PV: remove sms and cite
-  CatalogController.blacklight_config.show.document_actions.delete(:sms)
-  CatalogController.blacklight_config.show.document_actions.delete(:citation)
-  CatalogController.blacklight_config.show.document_actions.delete(:email)
-  
+ 
   layout :determine_layout if respond_to? :layout
 
   configure_blacklight do |config|
