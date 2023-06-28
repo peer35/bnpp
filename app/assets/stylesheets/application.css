@@ -145,10 +145,6 @@ body {
     line-height: 30px;
 }
 
-.list-group {
-    flex-direction: row;
-}
-
 .list-unstyled {
     padding-left: 0;
     list-style: none;
@@ -213,12 +209,6 @@ body {
 .facet-limit {
     margin-bottom: 0px;
 }
-
-/* for the records views */
-@import 'bootstrap';
-
-@import 'blacklight/blacklight';
-
 
 /* Sortable tables */
 table.sortable thead {
