@@ -145,17 +145,21 @@ body {
     line-height: 30px;
 }
 
-.list-unstyled {
+.site-footer .list-group {
+    flex-direction: row;
+}
+
+.site-footer .list-unstyled {
     padding-left: 0;
     list-style: none;
 }
-.list-triangle li {
+.site-footer .list-triangle li {
     padding-left: 10px;
     position: relative;
     /*line-height: 3rem;*/
 }
 
-.list-triangle li::before {
+.site-footer .list-triangle li::before {
     content: '\f054';
     font-family: 'FontAwesome';
     font-size: 5px;
