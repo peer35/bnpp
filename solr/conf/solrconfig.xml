@@ -155,13 +155,11 @@
         titel_unstem_search^50000
         titel_s^5000
         ondertitel_unstem_search^1000
-        ondertitelc_search^100
       </str>
       <str name="titel_pf">
         titel_unstem_search^50000
         titel_s^5000
         ondertitel_unstem_search^1000
-        ondertitelc_search^100
       </str>
       <str name="eigenaar_qf">
         eigenaar_unstem_search^2000

@@ -196,31 +196,31 @@ class CatalogController < ApplicationController
     config.add_search_field('personen_sm', label: 'Personen') do |field|
       field.solr_parameters = {
           :'spellcheck.dictionary' => 'personen',
-          qf: "'${personen_qf}'",
-          pf: "'${personen_pf}'"
+          qf: '${personen_qf}',
+          pf: '${personen_pf}'
       }
     end
 
     config.add_search_field('titel_s', label: 'Titel') do |field|
       field.solr_parameters = {
           :'spellcheck.dictionary' => 'titel',
-          qf: "'${titel_qf}'",
-          pf: "'${titel_pf}'"
+          qf: '${titel_qf}',
+          pf: '${titel_pf}'
       }
     end
 
     config.add_search_field('eigenaar_s', label: 'Eigenaar') do |field|
       field.solr_parameters = {
           :'spellcheck.dictionary' => 'eigenaar',
-          qf: "'${eigenaar_qf}'",
-          pf: "'${eigenaar_pf}'"
+          qf: '${eigenaar_qf}',
+          pf: '${eigenaar_pf}'
       }
     end
 
     config.add_search_field('verschenen_dtr', label: 'Jaar') do |field|
       field.solr_parameters = {
-          qf: "'${verschenen_qf}'",
-          pf: "'${verschenen_pf}'"
+          qf: '${verschenen_qf}',
+          pf: '${verschenen_pf}'
       }
     end
 
