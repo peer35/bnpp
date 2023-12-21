@@ -23,7 +23,7 @@ WORKDIR /usr/src/app
 COPY --chown=$APP_USER:$APP_GROUP Gemfile* ./
 ENV ENV_RAILS=production
 RUN bundle install
-COPY --chown=$APP_USER_UID:$APP_GROUP_UID . .
+COPY --chown=$APP_USER_UID:$APP_GROUP_GID . .
 RUN chmod +x /usr/src/app/lib/docker-entrypoint.sh && bundle exec rake app:update:bin
 ENTRYPOINT ["sh","/usr/src/app/lib/docker-entrypoint.sh"]
 CMD sh -c "bin/rails server -e production -b 0.0.0.0"
