@@ -2,8 +2,8 @@ FROM ruby:3.2-buster
 
 ARG APP_USER=appuser
 ARG APP_GROUP=appgroup
-ARG APP_USER_UID=1000
-ARG APP_GROUP_GID=1000
+ARG APP_USER_UID=1001
+ARG APP_GROUP_GID=1001
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
