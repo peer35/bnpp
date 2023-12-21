@@ -1,8 +1,8 @@
 version: '3'
 networks:
   default:
-    external:
-      name: bl-network # create with docker network create bl-network
+    name: bl-network # create with docker network create bl-network
+    external: true  
 
 services:
   solr:
@@ -48,7 +48,7 @@ services:
       RAILS_MAX_THREADS: 5
     command: sh -c "bin/rails server -e development -b 0.0.0.0"
     volumes:
-      - .:/usr/src/app
+      - ../bnpp:/usr/src/app
       - /docker/bnpp/log:/usr/src/app/log
     ports:
       - "3013:3000"
