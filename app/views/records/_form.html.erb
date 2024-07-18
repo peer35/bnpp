@@ -17,36 +17,35 @@
             parse_value('categorie', 'categorie');
 
             $('#record_verschenen').on('input selectionchange propertychange', function () {
-                parse_verschenen();
+              parse_value('verschenen', 'verschenen');
             });
             $('#record_categorie').on('input selectionchange propertychange', function () {
-              parse_categorie();
+              parse_value('categorie', 'categorie');
             });
-            $('#record_categorie').on('input selectionchange propertychange', function () {
-              parse_omvang();
+            $('#record_omvang').on('input selectionchange propertychange', function () {
+              parse_value('omvang', 'omvang');
             });
             $('#record_redactie').on('input selectionchange propertychange', function () {
-                parse_redactie();
+              parse_value('persoon', 'redactie');
             });
             $('#record_medewerkers').on('input selectionchange propertychange', function () {
-                parse_medewerkers();
+              parse_value('persoon', 'medewerkers');
             });
             $('#record_eigenaar').on('input selectionchange propertychange', function () {
-                parse_eigenaar();
+              parse_value('rest', 'eigenaar');
             });
             $('#record_uitgever').on('input selectionchange propertychange', function () {
-                parse_uitgever();
+              parse_value('rest', 'uitgever');
             });
             $('#record_drukker').on('input selectionchange propertychange', function () {
-                parse_drukker();
+              parse_value('rest', 'drukker');
             });
             $('#record_uitgave').on('input selectionchange propertychange', function () {
-                parse_uitgave();
+              parse_value('rest', 'uitgave');
             });
             $('#record_ondertitel').on('input selectionchange propertychange', function () {
-                parse_ondertitel();
+              parse_value('rest', 'ondertitel');
             });
-
     }
 
     function validate(teststr, type, div){
