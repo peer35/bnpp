@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
-  include BlacklightAdvancedSearch::Controller
+  #include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog  #include Blacklight::Marc::Catalog
 
  
@@ -8,11 +8,11 @@ class CatalogController < ApplicationController
 
   configure_blacklight do |config|
     # default advanced config values
-    config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+    #config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     # config.advanced_search[:qt] ||= 'advanced'
-    config.advanced_search[:url_key] ||= 'advanced'
-    config.advanced_search[:query_parser] ||= 'edismax'
-    config.advanced_search[:form_solr_parameters] ||= {}
+    #config.advanced_search[:url_key] ||= 'advanced'
+    #config.advanced_search[:query_parser] ||= 'edismax'
+    #config.advanced_search[:form_solr_parameters] ||= {}
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
@@ -269,6 +269,6 @@ class CatalogController < ApplicationController
     config.add_nav_action(:bookmark, partial: 'blacklight/nav/bookmark', if: :render_bookmarks_control?)
     config.add_nav_action(:search_history, partial: 'blacklight/nav/search_history')
 
-    config.advanced_search[:enabled] = true
+    #config.advanced_search[:enabled] = true
   end
 end
