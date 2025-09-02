@@ -21,4 +21,5 @@
 //= require_tree .
 
 //= require bnpp/sorttable
+//= require blacklight/blacklight
 
