@@ -14,6 +14,8 @@ class CatalogController < ApplicationController
     #config.advanced_search[:query_parser] ||= 'edismax'
     #config.advanced_search[:form_solr_parameters] ||= {}
 
+    config.advanced_search.enabled = true
+    
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #
