@@ -1,4 +1,4 @@
-@document_list.each_with_index do |document, document_counter|
+@response.documents.each_with_index do |document, document_counter|
   docx.h2 document[:titel_s]
   docx.p 'BNPP online', bold: true
   url='https://bnpp.hdc.vu.nl/catalog/' + document[:id]
