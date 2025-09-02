@@ -56,4 +56,5 @@ Rails.application.configure do
   config.i18n.default_locale = :nl
 
   config.active_record.use_yaml_unsafe_load = true # This is a temporary fix for the following error: "Psych::DisallowedClass: Tried to load unspecified class: Time"
+  config.action_view.annotate_rendered_view_with_filenames = true
 end

@@ -1,13 +1,17 @@
-<% if show_doc_actions? %>
-  <div class="card show-tools">
-    <div class="card-header">
-      <h2 class="mb-0 h6"><%= t('blacklight.tools.title') %></h2>
-    </div>
-    <% if render_show_doc_actions_method_from_blacklight? %>
-      <%= render(Blacklight::Document::ActionsComponent.new(document: @document, tag: 'ul', classes: 'list-group list-group-flush', wrapping_tag: 'li', wrapping_classes: 'list-group-item', actions: document_actions(@document), url_opts: Blacklight::Parameters.sanitize(params.to_unsafe_h))) %>
+<div class="card show-tools">
+  <div class="card-header">
+    <h2 class="mb-0 h6"><%= t('blacklight.tools.title') %></h2>
+  </div>
+  <%= render Blacklight::Document::ActionsComponent.new(document: document,
+                                                        tag: 'ul',
+                                                        classes: 'list-group list-group-flush',
+                                                        wrapping_tag: 'li',
+                                                        wrapping_classes: 'list-group-item list-group-item-action',
+                                                        actions: actions,
+                                                        url_opts: Blacklight::Parameters.sanitize(params.to_unsafe_h)) %>
       <ul class="list-group list-group-flush">
-      <% unless current_user.to_s.blank? %>
-        <% if Rails.configuration.x.admin_users_email.include? current_user.email %>
+      <% unless helpers.current_user.to_s.blank? %>
+        <% if Rails.configuration.x.admin_users_email.include? helpers.current_user.email %>
           <li class="list-group-item">
             <%= link_to 'Edit this record', {:action => "edit", :controller => "records", :id => @document.id} %>
           </li>
@@ -17,7 +21,7 @@
         <% end %>
       <% end %>
               <li class="list-group-item">
-          <%= link_to 'Download', search_action_url(format: :docx, search_field: 'id', q: @document.id) %>
+          <%= link_to 'Download', helpers.search_action_url(format: :docx, search_field: 'id', q: @document.id) %>
         </li>
         <li class="list-group-item">
           <!--<a target="_BLANK" href="https://vu.on.worldcat.org/search?sortKey=LIBRARY&databaseList=4054%2C3882%2C2276%2C2274%2C2273%2C1697%2C2269%2C2662%2C4048%2C3995%2C638%2C3999%2C1978%2C3879%2C3891%2C3374%2C3250%2C2437%2C2038%2C2796%2C1861%2C1982%2C2433%2C2795%2C3889%2C3782%2C2572%2C2175%2C3384%2C3261%2C1875%2C3018%2C3258%2C1476%2C3378%2C3652%2C3654%2C3552%2C3431%2C2584%2C2221%2C3551%2C2462%2C1920%2C3547%2C2215%2C2178%2C3421%2C3784%2C3563%2C3200%2C2474%2C3441%2C2198%2C2229%2C1931%2C3039%2C3556%2C3313%2C3433%2C2586%2C3036%2C2585%2C3950%2C2507%2C4023%2C3573%2C3572%2C3450%2C283%2C1941%2C2513%2C1666%2C2237%2C3205%2C3567%2C2236%2C2233%2C3962%2C3967%2C4030%2C2375%2C3582%2C3218%2C1953%2C2369%2C3336%2C2005%2C2401%2C1672%2C3575%2C4026%2C4028%2C2409%2C3976%2C1834%2C4044%2C3195%2C3903%2C3229%2C1842%2C3227%2C2259%2C2897%2C3589%2C3586%2C3909%2C1847%2C3988%2C3901&queryString=ti:<%= @document.first(:titel_s) %>&changedFacet=database&scope=&format=Jrnl&database=Z-wcorg&author=all&year=custom&yearFrom=<%= @document.first(:pub_date) %>&yearTo=&language=all">-->
@@ -32,15 +36,4 @@
         </li>
 
         </ul>
-    <% else %>
-      <% Deprecation.warn(self, '#render_show_doc_actions is deprecated; use ActionComponents instead') %>
-      <ul class="list-group list-group-flush">
-        <%= render_show_doc_actions @document do |config, inner| %>
-          <li class="list-group-item <%= config.key %>">
-            <%= inner %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
-<% end %>
+ </div>
