@@ -32,4 +32,4 @@ sitemap.xml.gz
 db/seeds_update.rb
 config/initializers/admins.rb
 
-public/assets
+#public/assets
