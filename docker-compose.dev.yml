@@ -35,17 +35,17 @@ services:
       DB_PW: ${DB_PW_BNPP}
       DB_HOST: ${DB_HOST_BNPP}
       DB_NAME: ${DB_NAME_BNPP}
-      #RAILS_ENV: development
-      RAILS_ENV: production
+      RAILS_ENV: development
+      #RAILS_ENV: production
       SITE_NAME: 127.0.0.1
       SECRET_KEY_BASE: ${SECRET_KEY_BASE_BNPP}
       SOLR_URL: http://${SOLR_HOST}:8983/solr/${SOLR_CORE_BNPP}
       #puma workers and threads
       WEB_CONCURRENCY: 1
       RAILS_MAX_THREADS: 5
-    #command: sh -c "bin/rails server -e development -b 0.0.0.0"
+    command: sh -c "bin/rails server -e development -b 0.0.0.0"
     volumes:
-      #- ../bnpp:/usr/src/app
+      - ../bnpp:/usr/src/app
       - /docker/bnpp/log:/usr/src/app/log
     ports:
       - "3013:3000"
