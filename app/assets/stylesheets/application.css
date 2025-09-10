@@ -23,7 +23,7 @@ body {
 #header-navbar .navbar-brand {
     width: 400px;
     height: 75px;
-
+    display: inline-block;
     background: transparent url("VUlogo_VU_HDC_RGB_wit_tcm215-852540.svg") no-repeat top left;
     background-size: 400px 75px;
     margin-right: 10px;
