@@ -7,7 +7,7 @@ if [ -f /usr/src/app/tmp/pids/server.pid ]; then
 fi
 
 #bundle exec rake db:migrate
-bundle exec rails generate blacklight:assets
+#bundle exec rails generate blacklight:assets
 
 # Then exec the container's main process (what's set as CMD in the docker-compose.yml).
 exec bundle exec "$@"
