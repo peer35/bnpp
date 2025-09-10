@@ -78,3 +78,4 @@ gem 'caracal-rails'
 gem 'bootstrap', '~> 5.3'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
+gem "sassc-rails", "~> 2.1"
