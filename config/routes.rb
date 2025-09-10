@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :records
   mount Blacklight::Engine => '/'
-  mount BlacklightAdvancedSearch::Engine => '/'
+  #mount BlacklightAdvancedSearch::Engine => '/'
 
   #Blacklight::Marc.add_routes(self)
   root to: "catalog#index"

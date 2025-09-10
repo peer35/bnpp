@@ -39,13 +39,13 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = true
+  #config.assets.debug = true
 
   # Suppress logger output for asset requests.
-  config.assets.quiet = true
+  #config.assets.quiet = true
 
-  config.assets.enabled = true
-  config.assets.paths << Rails.root.join('/app/assets/fonts')
+  #config.assets.enabled = true
+  #config.assets.paths << Rails.root.join('/app/assets/fonts')
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
@@ -56,4 +56,5 @@ Rails.application.configure do
   config.i18n.default_locale = :nl
 
   config.active_record.use_yaml_unsafe_load = true # This is a temporary fix for the following error: "Psych::DisallowedClass: Tried to load unspecified class: Time"
+  config.action_view.annotate_rendered_view_with_filenames = true
 end

@@ -14,16 +14,12 @@
 //= require popper
 //= require twitter/typeahead
 //= require bootstrap
-//= require 'blacklight_advanced_search'
-
 
 //= require jquery_ujs
 //= require turbolinks
-//
-// Required by Blacklight
-//= require blacklight/blacklight
 
 //= require_tree .
 
 //= require bnpp/sorttable
+//= require blacklight/blacklight
 
