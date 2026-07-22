@@ -33,3 +33,6 @@ db/seeds_update.rb
 config/initializers/admins.rb
 
 #public/assets
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
