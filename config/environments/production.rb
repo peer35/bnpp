@@ -101,4 +101,8 @@ Rails.application.configure do
   config.i18n.default_locale = :nl
 
   config.active_record.use_yaml_unsafe_load = true # This is a temporary fix for the following error: "Psych::DisallowedClass: Tried to load unspecified class: Time"
+
+  # Preserve prior secrets.yml behavior of reading secret_key_base from the
+  # environment in production; falls back to config/credentials.yml.enc otherwise.
+  config.secret_key_base = ENV["SECRET_KEY_BASE"] if ENV["SECRET_KEY_BASE"].present?
 end
